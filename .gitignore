@@ -1,0 +1,39 @@
+# General
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# Backend - Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env
+backend/.env
+
+# Frontend - Node/React
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.*
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/package-lock.json # Optional: some prefer to commit this, but if user wants to ignore "config", maybe? No, standard is to commit lockfile.
+# If user strictly wants to ignore frontend CONFIG files like vite.config.ts, that's rare. I will assume they mean generated/env files.
+
+# Models (AI Model Files)
+hf_models/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+*.onnx
+backend/app/models/ # Just in case

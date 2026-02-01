@@ -1,0 +1,110 @@
+# CalmGuard - 智能银行危机安抚系统
+
+**CalmGuard** 是一款面向企业级的 AI 对话系统，专为银行客户服务设计。它擅长处理高摩擦场景，如客户投诉、账户风险事件及情绪升级。与通用聊天机器人不同，CalmGuard 采用多阶段流水线，对用户意图、情绪和风险进行评估，然后生成合规、富有同理心且策略性强的回应。
+
+
+## 🚀 主要功能
+
+1. **意图识别**：精准分类用户意图（投诉、咨询、威胁、风险事件）。
+2. **情绪与风险评估**：实时评分用户情绪（0-3）并识别高风险标签（法律威胁、媒体曝光、监管投诉）。
+3. **动态策略路由**：自动选择最佳应对策略：
+    * **先安抚**：针对情绪激动但低风险的用户。
+    * **先解释**：处理标准咨询问题。
+    * **升级处理**：针对高敌意或已确认的风险事件。
+    * **风险拒绝**：礼貌拒绝不合规的要求。
+4. **合规响应生成**：生成银行级安全回应，避免法律责任，同时缓解紧张情绪。
+5. **透明调试**：实时可视化 AI 决策流程（意图 -> 情绪 -> 策略）。
+
+## 🛠 技术栈
+
+* **前端**：React 18（TypeScript）、Vite、Ant Design  
+* **后端**：Python 3.9+、FastAPI、Pydantic  
+* **AI 核心**：OpenAI GPT-3.5/4（兼容任何 OpenAI 格式 API）、Prompt 工程  
+* **架构**：模块化流水线模式
+
+## 📂 项目结构
+
+```
+CalmGuard/
+├── backend/               # FastAPI Backend
+│   ├── app/
+│   │   ├── main.py        # API Entry Point
+│   │   ├── services.py    # LLM Pipeline Logic
+│   │   ├── models.py      # Data Models (Pydantic)
+│   │   └── prompts.py     # Prompt Loader
+│   └── requirements.txt   # Python Dependencies
+├── frontend/              # React Frontend
+│   ├── src/
+│   │   ├── App.tsx        # Main Chat Interface
+│   │   └── ...
+│   └── package.json
+├── prompts/               # System Prompts (Markdown)
+│   ├── system_role.md
+│   ├── intent_detection.md
+│   ├── emotion_risk.md
+│   └── ...
+└── README.md
+```
+
+
+## ⚡ 快速启动
+
+### 前置条件
+* Node.js & npm  
+* Python 3.8+  
+* OpenAI API Key（演示模式可选）
+
+### 1. 后端配置
+
+```bash
+cd backend
+# 创建虚拟环境（可选）
+python -m venv venv
+# Windows: venv\Scripts\activate
+# Mac/Linux: source venv/bin/activate
+
+# 安装依赖
+pip install -r requirements.txt
+
+# 配置 API（可选）
+# 复制 .env.example 为 .env，填入 HF_TOKEN 以使用 Hugging Face 推理 API
+# 或设置 OPENAI_API_KEY 使用 OpenAI。若均未设置，则运行 MOCK 演示模式。
+
+# 启动服务
+uvicorn app.main:app --reload
+
+
+### 2. 前端配置
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Web UI 将启动在 `http://localhost:5173`.
+
+## 🧠 Prompt 工程策略
+本项目采用 Chain-of-Thought 与 流水线 方法。不是单一的“万能 Prompt”，而是拆分任务：
+
+1. **输入** -> **意图分类器（JSON）**
+2. **输入** -> **情绪/风险评分（JSON）**
+3. **意图 + 情绪** -> **策略路由器（JSON）**
+4. **策略 + 输入** -> **回应生成器（文本）**
+
+这样相比单次生成，可获得更高的控制力、可审计性和合规性。
+
+## 🔧 故障排查
+
+### LLM Error: Not Found
+若出现 `LLM Error (Intent/Emotion/Strategy/Response): Not Found`，通常是 Hugging Face API 配置有误。请确保：
+1. **base URL** 为 `https://router.huggingface.co/v1`（不要包含模型路径）
+2. **模型 ID** 为官方支持的格式，如 `Qwen/Qwen2.5-7B-Instruct`
+3. **HF_TOKEN** 在 `backend/.env` 中正确配置，且具有 "Inference Providers" 权限
+
+### Mock 模式
+若未设置 `HF_TOKEN` 或 `OPENAI_API_KEY`，系统自动切换为 Mock 模式，使用规则引擎模拟 AI 响应，便于本地演示。
+
+## ⚠️ 免责声明
+
+本项目仅用于教育和作品展示目的。虽然设计中考虑了合规性，但真实银行系统需要严格的法律审核和本地部署。

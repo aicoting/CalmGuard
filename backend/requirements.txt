@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pydantic
+openai
+python-dotenv
+torch
+transformers
+accelerate
