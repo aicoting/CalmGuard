@@ -8,10 +8,29 @@
     <br/>
   </p>
 </p>
+
 <p align="center">
-  <a href="https://github.com/lss233/kirara-ai/stargazers"><img src="https://img.shields.io/github/stars/lss233/kirara-ai?color=F8B195&amp;logo=github&amp;style=for-the-badge" alt="Github stars"></a>
-  <a href="https://pypi.org/project/kirara-ai/"><img src="https://img.shields.io/pypi/v/kirara-ai?color=F67280&amp;logo=pypi&amp;logoColor=white&amp;style=for-the-badge" alt="PyPI"></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/github/license/lss233/kirara-ai?&amp;color=C06C84&amp;style=for-the-badge" alt="License"></a>
+  <a href="https://github.com/aicoting/CalmGuard/stargazers">
+    <img src="https://img.shields.io/github/stars/aicoting/CalmGuard?color=F8B195&logo=github&style=for-the-badge" alt="Github stars">
+  </a>
+  <a href="https://pypi.org/project/CalmGuard/">
+    <img src="https://img.shields.io/pypi/v/CalmGuard?color=F67280&logo=pypi&logoColor=white&style=for-the-badge" alt="PyPI">
+  </a>
+  <a href="./LICENSE">
+    <img src="https://img.shields.io/github/license/aicoting/CalmGuard?color=C06C84&style=for-the-badge" alt="License">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://www.zhihu.com/people/wu-wang-wo-24-38"><img src="https://img.shields.io/badge/ZhiHu-知乎-8c36db" /></a>&emsp;
+  <a href="https://space.bilibili.com/3546955336649590?spm_id_from=333.1387.0.0"><img src="https://img.shields.io/badge/Bilibili-B站-ff69b4" /></a>&emsp;
+  <a href="https://juejin.cn/user/933911964427818"><img src="https://img.shields.io/badge/Juejin-掘金-FF6600?style=flat&logo=juejin&logoColor=white" /></a>&emsp;
+  <a href="https://blog.csdn.net/weixin_53004531?spm=1000.2115.3001.5343"><img src="https://img.shields.io/badge/CSDN-博客-0066B3?style=flat&logo=csdn&logoColor=white" /></a>&emsp;
+  <a href="https://www.youtube.com/channel/UCZFnqiae-NLdu-4uJJZscQg"><img src="https://img.shields.io/badge/YouTube-油管-c32136" /></a>&emsp;
+  <!-- visitor -->
+  <img src="https://komarev.com/ghpvc/?username=zhangting-hit&label=Views&color=orange&style=flat" alt="访问量统计" />&emsp;
+  <!-- wakatime -->    
+  <a href="https://wakatime.com/@zhangting-hit"><img src="https://wakatime.com/badge/user/42d0678c-368b-448b-9a77-5d21c5b55352.svg" /></a>
 </p>
 
 **CalmGuard** 是一款面向企业级的 AI 对话系统，专为银行客户服务设计。它擅长处理高摩擦场景，如客户投诉、账户风险事件及情绪升级。与通用聊天机器人不同，CalmGuard 采用多阶段流水线，对用户意图、情绪和风险进行评估，然后生成合规、富有同理心且策略性强的回应。
