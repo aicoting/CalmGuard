@@ -1,5 +1,5 @@
 <p align="center">
-  <h2 align="center">🎯 CalmGuard</h2>
+  <h2 align="center">🎯 EcomCare</h2>
   <p align="center">
     面向具体场景的AI落地实战项目！
     <br/>
@@ -9,17 +9,6 @@
   </p>
 </p>
 
-<p align="center">
-  <a href="https://github.com/aicoting/CalmGuard/stargazers">
-    <img src="https://img.shields.io/github/stars/aicoting/CalmGuard?color=F8B195&logo=github&style=for-the-badge" alt="Github stars">
-  </a>
-  <a href="https://pypi.org/project/CalmGuard/">
-    <img src="https://img.shields.io/pypi/v/CalmGuard?color=F67280&logo=pypi&logoColor=white&style=for-the-badge" alt="PyPI">
-  </a>
-  <a href="./LICENSE">
-    <img src="https://img.shields.io/github/license/aicoting/CalmGuard?color=C06C84&style=for-the-badge" alt="License">
-  </a>
-</p>
 
 <p align="center">
   <a href="https://www.zhihu.com/people/wu-wang-wo-24-38"><img src="https://img.shields.io/badge/ZhiHu-知乎-8c36db" /></a>&emsp;
@@ -33,25 +22,15 @@
   <a href="https://wakatime.com/@zhangting-hit"><img src="https://wakatime.com/badge/user/42d0678c-368b-448b-9a77-5d21c5b55352.svg" /></a>
 </p>
 
-**CalmGuard** 是一款面向企业级的 AI 对话系统，专为银行客户服务设计。它擅长处理高摩擦场景，如客户投诉、账户风险事件及情绪升级。与通用聊天机器人不同，CalmGuard 采用多阶段流水线，对用户意图、情绪和风险进行评估，然后生成合规、富有同理心且策略性强的回应。
+**EcomCare** 是一款面向企业级的 AI 对话系统，专为电商客户服务设计。它擅长处理高摩擦场景，如售后退换货、物流延误投诉及职业打假风险。与通用聊天机器人不同，EcomCare 采用多阶段流水线，对用户意图、情绪和风险进行评估，然后生成合规、热情且策略性强的回应。
 
-<div align="center">
+## 核心特性
 
-![CalmGuard Web 界面](./imgs/CalmGuard%20web界面.png)
-
-</div>
-
----
-
-## 🚀 核心功能
-
-| 功能模块 | 描述 |
-|----------|------|
-| **意图识别** | 精准分类用户意图（投诉、咨询、威胁、风险事件） |
-| **情绪与风险评估** | 实时评分用户情绪（0-3）并识别高风险标签（法律威胁、媒体曝光、监管投诉） |
-| **动态策略路由** | 自动选择最佳应对策略：<br>• **先安抚**：情绪激动但低风险<br>• **先解释**：处理标准咨询<br>• **升级处理**：高敌意或已确认风险事件<br>• **风险拒绝**：礼貌拒绝不合规要求 |
-| **合规响应生成** | 生成银行级安全回应，避免法律责任，同时缓解紧张情绪 |
-| **透明调试** | 实时可视化 AI 决策流程（意图 -> 情绪 -> 策略） |
+- **多阶段流水线**：意图识别 -> 情绪/风险分析 -> 策略路由 -> 回复生成。
+- **电商领域专精**：内置 7 天无理由退换货、物流查询、安抚补偿等电商专属策略。
+- **风险合规**：识别职业打假、平台投诉风险，自动路由至人工升级策略。
+- **结构化输出**：所有中间推理步骤（意图、风险标签）均以 JSON 格式输出，便于监控。
+- **灵活部署**：支持 OpenAI、HuggingFace、阿里云 DashScope 以及本地模型 (Dolly/Qwen)。
 
 ---
 
@@ -64,9 +43,9 @@
 
 ---
 
-## 😺 大模型 API 选择
+## 🛠️ 模型支持配置
 
-CalmGuard 支持多种大模型调用方式，可按需选择：
+EcomCare 支持多种大模型调用方式，可按需选择：
 
 1. **本地部署**  
    - 使用 vLLM / Ollama / Xinference 等框架，私有化运行开源模型（如 Qwen、ChatGLM、Baichuan）  
@@ -86,10 +65,10 @@ CalmGuard 支持多种大模型调用方式，可按需选择：
 
 ## 📂 项目结构
 
-```
-CalmGuard/
-├── backend/               # FastAPI Backend
-│   ├── app/
+```bash
+EcomCare/
+├── backend/            # Python FastAPI 后端
+│   ├── app/            # 应用代码
 │   │   ├── main.py        # API Entry Point
 │   │   ├── services.py    # LLM Pipeline Logic
 │   │   ├── models.py      # Data Models (Pydantic)

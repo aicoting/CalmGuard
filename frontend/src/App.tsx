@@ -41,7 +41,7 @@ interface Message {
 
 const App: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: '您好。我是银行服务专员。请问今天有什么可以帮您？' }
+    { role: 'assistant', content: '您好，欢迎光临[EcomCare商城]，我是您的专属客服。请问有什么想买的或者需要帮助的吗？' }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
@@ -99,10 +99,10 @@ const App: React.FC = () => {
 
   return (
     <Layout style={{ height: '100vh' }}>
-      <Header style={{ display: 'flex', alignItems: 'center', background: '#001529', padding: '0 20px' }}>
-        <SafetyCertificateOutlined style={{ fontSize: '24px', color: '#fff', marginRight: '10px' }} />
-        <Title level={3} style={{ color: '#fff', margin: 0 }}>CalmGuard 智能安抚系统</Title>
-        <Tag color="blue" style={{ marginLeft: '20px' }}>银行风控 & 投诉处理</Tag>
+      <Header style={{ display: 'flex', alignItems: 'center', background: '#001529', padding: '0 24px' }}>
+        <RobotOutlined style={{ fontSize: '24px', color: '#fff', marginRight: '16px' }} />
+        <Title level={3} style={{ color: '#fff', margin: 0 }}>EcomCare 智能客服系统</Title>
+        <Tag color="blue" style={{ marginLeft: '20px' }}>电商客服 & 售后处理</Tag>
       </Header>
       <Layout>
         <Content style={{ padding: '20px', display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' }}>

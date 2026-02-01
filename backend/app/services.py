@@ -109,47 +109,34 @@ def generate_llm_response(
         return ""
 
 
-# ===============================
-# Mock Fallbacks
-# ===============================
+# ---- Mock Modules for Fallback ----
 def mock_intent(message: str) -> IntentAnalysis:
+    if "退货" in message or "退款" in message:
+        return IntentAnalysis(intent="售后/退换货", confidence=0.9, reasoning="检测到退换货关键词")
+    if "发货" in message or "快递" in message:
+        return IntentAnalysis(intent="订单/物流查询", confidence=0.9, reasoning="检测到物流关键词")
     if "投诉" in message:
-        return IntentAnalysis(
-            intent="投诉/不满",
-            confidence=0.9,
-            reasoning="检测到投诉关键词"
-        )
-    return IntentAnalysis(
-        intent="业务咨询",
-        confidence=0.6,
-        reasoning="默认意图"
-    )
-
+        return IntentAnalysis(intent="投诉/不满", confidence=0.9, reasoning="检测到投诉关键词")
+    return IntentAnalysis(intent="商品咨询", confidence=0.6, reasoning="默认意图")
 
 def mock_emotion(message: str) -> EmotionRiskAnalysis:
     lvl = 0
-    if "!" in message or "愤怒" in message:
+    risk_tags = []
+    if "!" in message or "愤怒" in message or "垃圾" in message:
         lvl = 2
-    return EmotionRiskAnalysis(
-        emotion_level=lvl,
-        risk_tags=[],
-        risk_score=lvl * 25
-    )
+    if "投诉" in message or "举报" in message:
+        risk_tags.append("平台投诉")
+    return EmotionRiskAnalysis(emotion_level=lvl, risk_tags=risk_tags, risk_score=lvl * 25)
 
+def mock_strategy(intent: IntentAnalysis, emotion: EmotionRiskAnalysis) -> StrategyDecision:
+    if intent.intent == "售后/退换货":
+        return StrategyDecision(strategy="标准售后", prompt_template_name="after_sales", reasoning="售后流程")
+    return StrategyDecision(strategy="热情导购", prompt_template_name="guide", reasoning="默认导购")
 
-def mock_strategy(
-    intent: IntentAnalysis,
-    emotion: EmotionRiskAnalysis
-) -> StrategyDecision:
-    return StrategyDecision(
-        strategy="解释优先",
-        prompt_template_name="explain",
-        reasoning="默认策略"
-    )
-
-
-def mock_response(_: StrategyDecision) -> str:
-    return "非常抱歉给您带来不便，我是您的专属服务专员，请问具体是什么情况呢？"
+def mock_response(strategy: StrategyDecision) -> str:
+    if strategy.strategy == "标准售后":
+        return "亲，非常抱歉让您不满意了。我们支持7天无理由退换货，您可以直接在订单页面申请哦，运费我们有赠送运费险的。"
+    return "亲，您好！我是您的专属客服，请问有什么可以帮您？如果是关于商品的问题，可以直接问我哦~"
 
 
 # ===============================

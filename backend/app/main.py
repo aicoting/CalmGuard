@@ -4,7 +4,7 @@ from app.models import UserInput, BotResponse
 from app.services import process_chat
 from app.prompts import prompt_manager
 
-app = FastAPI(title="CalmGuard API", version="1.0.0")
+app = FastAPI(title="EcomCare API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
