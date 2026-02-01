@@ -1,5 +1,5 @@
 <p align="center">
-  <h2 align="center">CalmGuard</h2>
+  <h2 align="center">🎯 CalmGuard</h2>
   <p align="center">
     面向具体场景的AI落地实战项目！
     <br/>
@@ -8,7 +8,11 @@
     <br/>
   </p>
 </p>
-
+<p align="center">
+  <a href="https://github.com/lss233/kirara-ai/stargazers"><img src="https://img.shields.io/github/stars/lss233/kirara-ai?color=F8B195&amp;logo=github&amp;style=for-the-badge" alt="Github stars"></a>
+  <a href="https://pypi.org/project/kirara-ai/"><img src="https://img.shields.io/pypi/v/kirara-ai?color=F67280&amp;logo=pypi&amp;logoColor=white&amp;style=for-the-badge" alt="PyPI"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/github/license/lss233/kirara-ai?&amp;color=C06C84&amp;style=for-the-badge" alt="License"></a>
+</p>
 **CalmGuard** 是一款面向企业级的 AI 对话系统，专为银行客户服务设计。它擅长处理高摩擦场景，如客户投诉、账户风险事件及情绪升级。与通用聊天机器人不同，CalmGuard 采用多阶段流水线，对用户意图、情绪和风险进行评估，然后生成合规、富有同理心且策略性强的回应。
 
 <div align="center">
